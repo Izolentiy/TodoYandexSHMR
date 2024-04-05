@@ -19,7 +19,7 @@
     <color name="backSecondary">#FFFFFF</color>
     <color name="backElevated">#FFFFFF</color>
 
-    <color name="redTranparent">#19FF3B30</color>
+    <color name="redTransparent">#19FF3B30</color>
     <color name="red">#FF3B30</color>
     <color name="green">#34C759</color>
     <color name="blue">#007AFF</color>

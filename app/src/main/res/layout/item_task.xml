@@ -4,10 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:layout_height="wrap_content">
 
-    <ImageView
+    <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/image_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,7 +14,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@sample/priorities" />
+        tools:checked="@sample/checked" />
 
     <TextView
         android:id="@+id/textview_content"
@@ -23,9 +22,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="16dp"
-        android:fontFamily="@font/sf_pro_text"
+        android:textAppearance="@style/Body"
         android:textColor="@color/labelPrimary"
-        android:textSize="17sp"
         android:maxLines="3"
         android:ellipsize="end"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,6 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/textview_content"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/ic_chevron" />
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_chevron" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

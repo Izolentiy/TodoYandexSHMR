@@ -3,4 +3,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="ic_chevron_description">Swipe for more actions</string>
     <string name="ic_rbtn_status">Shows current status of task</string>
+    <string name="new_task_edit_text_hint">Что надо сделать...</string>
+    <string name="newtask_priority_label">Важность</string>
+    <string name="newtask_deadline_label">Сделать до</string>
+    <string name="newtask_button_remove_label">Удалить</string>
+    <string name="tasklist_toolbar_label">Мои дела</string>
+    <string name="fab_add_new_task">Add new task</string>
+    <string name="button_priority_off">нет</string>
 </resources>
