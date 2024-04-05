@@ -35,6 +35,9 @@ android {
     room {
         schemaDirectory("$projectDir/schemas")
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -46,9 +49,15 @@ dependencies {
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)
 
+    implementation(libs.androidx.fragment.ktx)
+
     implementation(libs.androidx.room.runtime)
-    annotationProcessor(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+
+    //noinspection KaptUsageInsteadOfKsp
     kapt(libs.androidx.room.compiler)
+
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
     testImplementation(libs.mockwebserver)
 
