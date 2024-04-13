@@ -8,6 +8,16 @@
     <string name="newtask_deadline_label">Сделать до</string>
     <string name="newtask_button_remove_label">Удалить</string>
     <string name="tasklist_toolbar_label">Мои дела</string>
-    <string name="fab_add_new_task">Add new task</string>
+    <string name="fab_add_new_task">Добавить новую задачу</string>
     <string name="button_priority_off">нет</string>
+    <string name="action_sort_label">Сортировка</string>
+    <string name="action_filter_label">Фильтр</string>
+    <string name="action_settings_label">Настройки</string>
+    <string name="action_save_label">Сохранить</string>
+    <string name="action_delete_label">Удалить</string>
+    <string name="delete_task_dialog_title">Удалить задачу?</string>
+    <string name="discard_changes_dialog_title">Сохранить изменения?</string>
+    <string name="delete_task_dialog_positive_action">Удалить</string>
+    <string name="discard_changes_dialog_positive_action">Сохранить</string>
+    <string name="discard_changes_dialog_negative_action">Нет</string>
 </resources>

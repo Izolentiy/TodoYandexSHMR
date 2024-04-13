@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.TodoList" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/backPrimary</item>
+        <item name="colorPrimary">@color/blue</item>
         <item name="colorPrimaryVariant">@color/backSecondary</item>
         <item name="colorOnPrimary">@color/labelPrimary</item>
         <!-- Secondary brand color. -->
@@ -10,16 +10,8 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/labelSecondary</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="android:statusBarColor">@color/backPrimary</item>
         <item name="android:windowLightStatusBar">true</item>
-        <!-- Customize your theme here. -->
-    </style>
-
-    <style name="Widget.App.Button.OutlinedButton.IconOnly" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="iconPadding">0dp</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="android:minWidth">36dp</item>
-        <item name="android:minHeight">36dp</item>
+        <item name="colorControlNormal">@color/labelPrimary</item>
     </style>
 </resources>

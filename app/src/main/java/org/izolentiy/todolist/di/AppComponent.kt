@@ -8,7 +8,7 @@ import dagger.Module
 import dagger.Provides
 import org.izolentiy.todolist.AppDatabase
 import org.izolentiy.todolist.TaskDao
-import org.izolentiy.todolist.newtask.TaskEditorViewModel
+import org.izolentiy.todolist.taskeditor.TaskEditorViewModel
 import org.izolentiy.todolist.tasklist.TaskListViewModel
 import javax.inject.Scope
 

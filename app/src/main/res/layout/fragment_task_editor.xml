@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,147 +11,152 @@
         android:minHeight="?attr/actionBarSize">
 
         <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/backPrimary"
+            app:menu="@menu/task_editor_menu"
+            app:navigationIcon="@drawable/ic_close"
             app:title="Дело"
             app:titleTextAppearance="@style/RegularTitle" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/backPrimary"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".newtask.TaskEditorFragment">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <EditText
-            android:id="@+id/edittext_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:autofillHints="string"
-            android:background="@color/backSecondary"
-            android:hint="@string/new_task_edit_text_hint"
-            android:inputType="text"
-            android:padding="16dp"
-            android:textAppearance="@style/Body"
-            android:textColor="@color/labelPrimary"
-            android:textColorHint="@color/labelTertiary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="16dp"
+            tools:context=".taskeditor.TaskEditorFragment">
 
-        <TextView
-            android:id="@+id/textview_priority_label"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@color/backSecondary"
-            android:paddingStart="16dp"
-            android:paddingTop="17dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="17dp"
-            android:text="@string/newtask_priority_label"
-            android:textAppearance="@style/Body"
-            android:textColor="@color/labelPrimary"
-            app:layout_constraintEnd_toStartOf="@id/toggle_group_priorities"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edittext_title" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edittext_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:autofillHints="string"
+                android:background="@color/backSecondary"
+                android:hint="@string/new_task_edit_text_hint"
+                android:inputType="textMultiLine"
+                android:padding="16dp"
+                android:textAppearance="@style/Body"
+                android:textColor="@color/labelPrimary"
+                android:textColorHint="@color/labelTertiary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.button.MaterialButtonToggleGroup
-            android:id="@+id/toggle_group_priorities"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginEnd="16dp"
-            android:background="@color/backSecondary"
-            android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="@id/textview_priority_label"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/textview_priority_label"
-            app:layout_constraintTop_toTopOf="@id/textview_priority_label"
-            app:selectionRequired="true"
-            app:singleSelection="true">
+            <TextView
+                android:id="@+id/textview_priority_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/backSecondary"
+                android:paddingStart="16dp"
+                android:paddingTop="17dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="17dp"
+                android:text="@string/newtask_priority_label"
+                android:textAppearance="@style/Body"
+                android:textColor="@color/labelPrimary"
+                app:layout_constraintEnd_toStartOf="@id/toggle_group_priorities"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edittext_title" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_low_priority"
-                style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/toggle_group_priorities"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:backgroundTint="@drawable/ic_priority_selector"
-                app:icon="@drawable/ic_priority_low" />
+                android:layout_height="0dp"
+                android:background="@color/backSecondary"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="@id/textview_priority_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/textview_priority_label"
+                app:layout_constraintTop_toTopOf="@id/textview_priority_label"
+                app:selectionRequired="true"
+                app:singleSelection="true">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_reg_priority"
-                style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_low_priority"
+                    style="@style/ToggleButton.New"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:icon="@drawable/ic_priority_low" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_reg_priority"
+                    style="@style/ToggleButton.New"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/button_priority_off" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_high_priority"
+                    style="@style/ToggleButton.New"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:icon="@drawable/ic_priority_high" />
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:dividerColor="@color/supportSeparator"
+                app:dividerThickness="0.5dp"
+                app:layout_constraintEnd_toEndOf="@id/toggle_group_priorities"
+                app:layout_constraintStart_toStartOf="@id/textview_priority_label"
+                app:layout_constraintTop_toBottomOf="@id/textview_priority_label" />
+
+            <TextView
+                android:id="@+id/textview_deadline_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/backSecondary"
+                android:paddingStart="16dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="16dp"
+                android:text="@string/newtask_deadline_label"
+                android:textAppearance="@style/Body"
+                android:textColor="@color/labelPrimary"
+                app:layout_constraintEnd_toStartOf="@id/switch_deadline_on"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider" />
+
+            <TextView
+                android:id="@+id/textview_deadline_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/backSecondary"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="8dp"
+                tools:text="1 августа 2024"
+                android:textAppearance="@style/Subhead"
+                android:textColor="@color/blue"
+                app:layout_constraintEnd_toStartOf="@id/switch_deadline_on"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_deadline_label"/>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch_deadline_on"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:backgroundTint="@drawable/ic_priority_selector"
-                android:text="@string/button_priority_off"
-                android:textAllCaps="false"
-                android:textAppearance="@style/Button" />
+                android:layout_height="0dp"
+                android:background="@color/backSecondary"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                app:layout_constraintBottom_toBottomOf="@id/textview_deadline_date"
+                app:layout_constraintEnd_toEndOf="@id/toggle_group_priorities"
+                app:layout_constraintTop_toTopOf="@id/textview_deadline_label" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_high_priority"
-                style="@style/Widget.App.Button.OutlinedButton.IconOnly"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:backgroundTint="@drawable/ic_priority_selector"
-                app:icon="@drawable/ic_priority_high" />
-
-        </com.google.android.material.button.MaterialButtonToggleGroup>
-
-        <com.google.android.material.divider.MaterialDivider
-            android:id="@+id/divider"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@id/toggle_group_priorities"
-            app:layout_constraintStart_toStartOf="@id/textview_priority_label"
-            app:layout_constraintTop_toBottomOf="@id/textview_priority_label" />
-
-        <TextView
-            android:id="@+id/textview_deadline_label"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:background="@color/backSecondary"
-            android:paddingStart="16dp"
-            android:paddingTop="17dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="17dp"
-            android:text="@string/newtask_deadline_label"
-            android:textAppearance="@style/Body"
-            android:textColor="@color/labelPrimary"
-            app:layout_constraintEnd_toStartOf="@id/switch_deadline_on"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divider" />
-
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/switch_deadline_on"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:background="@color/backSecondary"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            app:layout_constraintBottom_toBottomOf="@id/textview_deadline_label"
-            app:layout_constraintEnd_toEndOf="@id/toggle_group_priorities"
-            app:layout_constraintTop_toTopOf="@id/textview_deadline_label" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@color/backSecondary"
-            android:text="@string/newtask_button_remove_label"
-            android:textAllCaps="false"
-            android:textAppearance="@style/Button"
-            app:elevation="0dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textview_deadline_label" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

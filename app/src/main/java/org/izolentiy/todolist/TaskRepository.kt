@@ -9,5 +9,9 @@ class TaskRepository @Inject constructor(
 ) {
     fun allTasks(): Flow<List<Task>> = taskDao.getAllTasks()
 
-    suspend fun addTask(task: Task) = taskDao.addNewTask(task)
+    suspend fun getTask(taskId: Long): Task = taskDao.getTask(taskId)
+
+    suspend fun insertTask(task: Task): Long = taskDao.insertTask(task)
+
+    suspend fun deleteTask(taskId: Long) = taskDao.deleteTask(taskId)
 }

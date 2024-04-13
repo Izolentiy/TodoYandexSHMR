@@ -5,7 +5,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.ClassKey
 import dagger.multibindings.IntoMap
-import org.izolentiy.todolist.newtask.TaskEditorViewModel
+import org.izolentiy.todolist.taskeditor.TaskEditorViewModel
 import org.izolentiy.todolist.tasklist.TaskListViewModel
 
 @Module

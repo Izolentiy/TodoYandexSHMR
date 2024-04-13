@@ -7,8 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
 
+<!--    <color name="supportSeparator">#B7B7B7</color>-->
     <color name="supportSeparator">#33000000</color>
-    <color name="supportOverlay">#0F000000</color>
+<!--    <color name="supportOverlay">#F0F0F0</color>-->
+        <color name="supportOverlay">#0F000000</color>
 
     <color name="labelPrimary">#000000</color>
     <color name="labelSecondary">#99000000</color>

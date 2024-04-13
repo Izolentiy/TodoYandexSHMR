@@ -20,19 +20,4 @@ class TaskListViewModel @Inject constructor(
     }
 
     val taskList: Flow<List<Task>> = taskRepository.allTasks()
-
-    fun addNewTask() {
-        viewModelScope.launch {
-            val task = Task(
-                id = System.currentTimeMillis().toString(),
-                text = "Buy something",
-                priority = Task.Priority.BASIC,
-                deadline = null,
-                isDone = false,
-                created = Date(System.currentTimeMillis()),
-                changed = Date(System.currentTimeMillis())
-            )
-            taskRepository.addTask(task)
-        }
-    }
 }
