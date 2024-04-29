@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_sort_task_dialog"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/backPrimary"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textview_sort_by"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        android:text="@string/sort_by_label"
+        android:textAppearance="@style/DialogTitle"
+        android:textColor="@color/labelPrimary" />
+
+    <RadioGroup
+        android:id="@+id/radio_group_property"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/radio_date_created"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/by_date_created_label"
+            android:textAppearance="@style/Body"
+            android:textColor="@color/labelPrimary" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/radio_date_modified"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/by_date_modified_label"
+            android:textAppearance="@style/Body"
+            android:textColor="@color/labelPrimary" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/radio_importance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/by_importance_label"
+            android:textAppearance="@style/Body"
+            android:textColor="@color/labelPrimary" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/radio_deadline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/by_deadline_label"
+            android:textAppearance="@style/Body"
+            android:textColor="@color/labelPrimary" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/radio_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/by_status_label"
+            android:textAppearance="@style/Body"
+            android:textColor="@color/labelPrimary" />
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingBottom="8dp"
+        android:text="@string/order_label"
+        android:textAppearance="@style/Subhead"
+        android:textColor="@color/labelSecondary" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp" />
+
+    <RadioGroup
+        android:id="@+id/radio_group_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/radio_ascending"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ascending_label"
+            android:textAppearance="@style/Body"
+            android:textColor="@color/labelPrimary" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/radio_descending"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/descending_label"
+            android:textAppearance="@style/Body"
+            android:textColor="@color/labelPrimary" />
+    </RadioGroup>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_cancel_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel_label"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@id/button_apply_sort"
+            style="@style/ActionButton"/>
+
+        <com.google.android.material.button.MaterialButton
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toEndOf="@id/button_cancel_sort"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/button_apply_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/apply_label"
+            style="@style/ActionButton"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

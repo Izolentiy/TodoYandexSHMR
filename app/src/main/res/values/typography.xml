@@ -14,6 +14,10 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="DialogTitle" parent="Title">
+        <item name="android:textSize">18sp</item>
+    </style>
+
 
     <style name="RegularText">
         <item name="android:fontFamily">@font/sf_pro_text</item>

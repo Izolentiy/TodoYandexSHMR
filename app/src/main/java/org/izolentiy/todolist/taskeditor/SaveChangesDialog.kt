@@ -13,7 +13,7 @@ class SaveChangesDialog : DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return MaterialAlertDialogBuilder(requireContext())
+        return MaterialAlertDialogBuilder(requireContext(), R.style.AlertDialog)
             .setTitle(R.string.discard_changes_dialog_title)
             .setPositiveButton(R.string.discard_changes_dialog_positive_action) { _, _ ->
                 (requireParentFragment() as Listener).onPositiveSaveDialog()

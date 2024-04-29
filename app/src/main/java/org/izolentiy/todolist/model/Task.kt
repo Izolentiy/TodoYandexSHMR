@@ -1,6 +1,5 @@
 package org.izolentiy.todolist.model
 
-import androidx.recyclerview.widget.DiffUtil
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -19,19 +18,4 @@ data class Task(
     enum class Priority {
         LOW, BASIC, HIGH
     }
-
-    fun toMutableTask() = MutableTask(
-        id = id,
-        text = text,
-        priority = priority,
-        deadline = deadline,
-        isDone = isDone,
-        created = created,
-        changed = changed
-    )
-}
-
-object TaskComparator : DiffUtil.ItemCallback<Task>() {
-    override fun areItemsTheSame(old: Task, new: Task) = old.id == new.id
-    override fun areContentsTheSame(old: Task, new: Task) = old == new
 }

@@ -1,16 +1,17 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.TodoList" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/blue</item>
-        <item name="colorPrimaryVariant">@color/backSecondary</item>
-        <item name="colorOnPrimary">@color/labelPrimary</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/blue</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/labelSecondary</item>
+<!--        <item name="colorPrimaryVariant">@color/backSecondary</item>-->
+<!--        <item name="colorOnPrimary">@color/labelPrimary</item>-->
+<!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
+<!--        <item name="colorSecondary">@color/blue</item>-->
+<!--        <item name="colorSecondaryVariant">@color/teal_200</item>-->
+<!--        <item name="colorOnSecondary">@color/labelSecondary</item>-->
         <!-- Status bar color. -->
+        <item name="colorAccent">@color/blue</item>
         <item name="android:statusBarColor">@color/backPrimary</item>
-        <item name="colorControlNormal">@color/labelPrimary</item>
+        <item name="colorControlNormal">@color/fg_ic_action_menu</item>
     </style>
 </resources>

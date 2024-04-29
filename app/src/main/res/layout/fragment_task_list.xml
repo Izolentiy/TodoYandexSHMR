@@ -13,6 +13,7 @@
         android:elevation="0dp">
 
         <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_task_list"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/backPrimary"
@@ -90,6 +91,7 @@
         android:src="@drawable/ic_add"
         app:layout_anchor="@id/recyclerview_tasks"
         app:layout_anchorGravity="bottom|end"
+        app:backgroundTint="?colorAccent"
         app:tint="@color/white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,12 +1,13 @@
 package org.izolentiy.todolist.taskeditor
 
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -17,7 +18,6 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import kotlinx.coroutines.launch
 import org.izolentiy.todolist.R
 import org.izolentiy.todolist.getViewModel
-import org.izolentiy.todolist.model.MutableTask
 import org.izolentiy.todolist.model.Task
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -30,7 +30,7 @@ class TaskEditorFragment : Fragment(), DeleteTaskDialog.Listener, SaveChangesDia
     private val binding get() = _binding!!
 
     override fun onAttach(context: Context) {
-        viewModel = context.getViewModel(TaskEditorViewModel::class.java)
+        viewModel = context.getViewModel(this, TaskEditorViewModel::class.java)
         super.onAttach(context)
     }
 
@@ -55,6 +55,8 @@ class TaskEditorFragment : Fragment(), DeleteTaskDialog.Listener, SaveChangesDia
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 viewModel.taskState.collect { task ->
                     binding.apply {
+                        toolbar.menu.findItem(R.id.action_delete).isEnabled = task.id != 0L
+                        toolbar.menu.findItem(R.id.action_save).isEnabled = task.text.isNotBlank()
                         updateDeadlineSwitch(task)
                         updateTextDeadlineDate(task)
                     }
@@ -100,7 +102,14 @@ class TaskEditorFragment : Fragment(), DeleteTaskDialog.Listener, SaveChangesDia
     }
 
     private fun Binding.configureTitleEdittext() {
-        edittextTitle.addTextChangedListener(InputWatcher(edittextTitle, viewModel))
+        val inputWatcher = InputWatcher(edittextTitle, viewModel)
+        edittextTitle.addTextChangedListener(inputWatcher)
+        edittextTitle.setOnFocusChangeListener { view, hasFocus ->
+            Log.d(TAG, "hideKeyboard: ----- $hasFocus")
+            if (!hasFocus) {
+                hideKeyboard(view)
+            }
+        }
     }
 
     private fun Binding.configurePriorityToggleGroup() {
@@ -124,6 +133,7 @@ class TaskEditorFragment : Fragment(), DeleteTaskDialog.Listener, SaveChangesDia
                     Log.d(TAG, "configureDeadlineSwitch: SWITCH_UNCHECKED")
                     viewModel.updateDeadline(null)
                 }
+
                 true -> {
                     Log.d(TAG, "configureDeadlineSwitch: SWITCH_CHECKED")
                     if (viewModel.task.deadline == null) {
@@ -143,12 +153,18 @@ class TaskEditorFragment : Fragment(), DeleteTaskDialog.Listener, SaveChangesDia
             true
         }
         toolbar.setNavigationOnClickListener {
-            if (viewModel.savedTask == viewModel.task) {
+            if (viewModel.savedTask == viewModel.task || viewModel.task.text.isBlank()) {
                 parentFragmentManager.popBackStack()
             } else {
                 SaveChangesDialog().show(childFragmentManager, "save_changes_dialog")
             }
         }
+    }
+
+    private fun hideKeyboard(view: View) {
+        val inputMethodManager = requireContext()
+            .getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
     private fun deleteTask() {
@@ -157,6 +173,7 @@ class TaskEditorFragment : Fragment(), DeleteTaskDialog.Listener, SaveChangesDia
 
     private fun saveTask() {
         viewModel.saveTask()
+        parentFragmentManager.popBackStack()
     }
 
     private fun showDatePicker() {

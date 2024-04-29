@@ -39,8 +39,14 @@ class TaskListFragment : Fragment() {
         }
     }
 
+    private val onTaskCheckListener: (
+        task: Task, checked: Boolean
+    ) -> Unit = { task, checked ->
+        viewModel.updateTask(task.copy(isDone = checked))
+    }
+
     override fun onAttach(context: Context) {
-        viewModel = context.getViewModel(TaskListViewModel::class.java)
+        viewModel = context.getViewModel(this, TaskListViewModel::class.java)
         super.onAttach(context)
     }
 
@@ -49,7 +55,7 @@ class TaskListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentTaskListBinding.inflate(inflater, container, false)
-        val taskAdapter = TaskAdapter(onTaskClickListener)
+        val taskAdapter = TaskAdapter(onTaskCheckListener, onTaskClickListener)
         binding.recyclerviewTasks.apply {
             adapter = taskAdapter
             layoutManager = LinearLayoutManager(context)
@@ -71,15 +77,42 @@ class TaskListFragment : Fragment() {
             }
         }
 
+        binding.toolbarTaskList.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.action_sort -> showSortTaskDialog()
+                R.id.action_filter -> showFilterTaskDialog()
+                R.id.action_settings -> showSettings()
+                else -> false
+            }
+        }
+
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                Log.d(TAG, "onCreateView: resumed")
                 viewModel.taskList.collect {
-                    Log.d(TAG, "onCreateView: collection started")
+                    Log.d(TAG, "onCreateView: item collected")
                     taskAdapter.submitList(it)
                 }
             }
         }
         return binding.root
+    }
+
+    private fun showSettings(): Boolean {
+        return true
+    }
+
+    private fun showFilterTaskDialog(): Boolean {
+        val order = viewModel.currentSort.isAscending
+        val sort = TaskSort(TaskSort.Type.BY_STATUS, !order)
+        viewModel.applySort(sort)
+        return true
+    }
+
+    private fun showSortTaskDialog(): Boolean {
+        Log.d(TAG, "showFilterTaskDialog: START SORT DIALOG")
+        SortTaskDialog().show(childFragmentManager, "sort_task_dialog")
+        return true
     }
 
     override fun onDestroyView() {

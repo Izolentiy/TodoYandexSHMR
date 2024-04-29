@@ -26,14 +26,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/backPrimary"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingStart="8dp"
-            android:paddingEnd="8dp"
             android:paddingTop="16dp"
+            android:paddingEnd="8dp"
             tools:context=".taskeditor.TaskEditorFragment">
 
             <androidx.appcompat.widget.AppCompatEditText
@@ -84,21 +87,21 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/button_low_priority"
-                    style="@style/ToggleButton.New"
+                    style="@style/ToggleButton"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     app:icon="@drawable/ic_priority_low" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/button_reg_priority"
-                    style="@style/ToggleButton.New"
+                    style="@style/ToggleButton"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/button_priority_off" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/button_high_priority"
-                    style="@style/ToggleButton.New"
+                    style="@style/ToggleButton"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     app:icon="@drawable/ic_priority_high" />
@@ -138,12 +141,12 @@
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:paddingBottom="8dp"
-                tools:text="1 августа 2024"
                 android:textAppearance="@style/Subhead"
                 android:textColor="@color/blue"
                 app:layout_constraintEnd_toStartOf="@id/switch_deadline_on"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textview_deadline_label"/>
+                app:layout_constraintTop_toBottomOf="@id/textview_deadline_label"
+                tools:text="1 августа 2024" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/switch_deadline_on"

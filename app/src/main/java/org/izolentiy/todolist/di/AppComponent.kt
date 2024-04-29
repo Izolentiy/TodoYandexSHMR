@@ -6,8 +6,8 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
 import dagger.Provides
-import org.izolentiy.todolist.AppDatabase
-import org.izolentiy.todolist.TaskDao
+import org.izolentiy.todolist.datasource.AppDatabase
+import org.izolentiy.todolist.datasource.TaskDao
 import org.izolentiy.todolist.taskeditor.TaskEditorViewModel
 import org.izolentiy.todolist.tasklist.TaskListViewModel
 import javax.inject.Scope

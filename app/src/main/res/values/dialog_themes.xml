@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="colorSurface">@color/backPrimary</item>
+        <item name="colorOnSurface">@color/labelPrimary</item>
+        <item name="buttonBarPositiveButtonStyle">@style/ActionButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/ActionButton</item>
+        <item name="buttonBarNeutralButtonStyle">@style/ActionButton</item>
+    </style>
+</resources>

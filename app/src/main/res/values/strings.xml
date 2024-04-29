@@ -20,4 +20,15 @@
     <string name="delete_task_dialog_positive_action">Удалить</string>
     <string name="discard_changes_dialog_positive_action">Сохранить</string>
     <string name="discard_changes_dialog_negative_action">Нет</string>
+    <string name="sort_by_label">Сортировать по</string>
+    <string name="by_date_created_label">Дате создания</string>
+    <string name="by_date_modified_label">Дате изменения</string>
+    <string name="by_importance_label">Важности</string>
+    <string name="by_deadline_label">Дедлайну</string>
+    <string name="by_status_label">Статусу</string>
+    <string name="order_label">Порядок</string>
+    <string name="ascending_label">По возрастанию</string>
+    <string name="descending_label">По убыванию</string>
+    <string name="cancel_label">Отмена</string>
+    <string name="apply_label">Применить</string>
 </resources>

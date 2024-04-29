@@ -7,7 +7,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import org.izolentiy.todolist.TaskRepository
+import org.izolentiy.todolist.datasource.TaskRepository
 import org.izolentiy.todolist.model.Task
 import java.util.Date
 import javax.inject.Inject
@@ -16,6 +16,7 @@ class TaskEditorViewModel @Inject constructor(
     private val taskRepository: TaskRepository
 ) : ViewModel() {
     private val TAG = TaskEditorViewModel::class.simpleName
+
     init {
         Log.d(TAG, "$TAG CREATED")
     }
@@ -35,7 +36,14 @@ class TaskEditorViewModel @Inject constructor(
     }
 
     fun saveTask(): Job = viewModelScope.launch {
-        task = task.copy(id = taskRepository.insertTask(task))
+        val currentTime = Date(System.currentTimeMillis())
+        val createdTime = task.created.takeIf { it.time != 0L } ?: currentTime
+        task = task.copy(created = createdTime, changed = currentTime)
+
+        val id = taskRepository.insertTask(task)
+        if (task.id != id) {
+            task = task.copy(id = id)
+        }
         savedTask = task
     }
 
